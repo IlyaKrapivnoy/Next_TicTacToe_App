@@ -12,9 +12,15 @@ const Square = ({
   onClick: () => void;
 }) => {
   if (!value) {
-    return <button onClick={onClick} disabled={Boolean(winner)} />;
+    return (
+      <button className="square" onClick={onClick} disabled={Boolean(winner)} />
+    );
   }
-  return <button disabled>{value}</button>;
+  return (
+    <button disabled className={`square square_${value.toLocaleLowerCase()}`}>
+      {value}
+    </button>
+  );
 };
 
 export default Square;

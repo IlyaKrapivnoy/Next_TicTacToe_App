@@ -21,8 +21,8 @@ const Board = () => {
 
   return (
     <>
-      <div>Board is here</div>
-      {currentPlayer}
+      <p>Hey {currentPlayer}, play the game!</p>
+
       <div className="grid">
         {Array(9)
           .fill(null)
