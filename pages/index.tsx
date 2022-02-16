@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import Board from "../containers/Board";
 
 const Home: NextPage = () => {
   return (
@@ -9,6 +10,7 @@ const Home: NextPage = () => {
               <title>Tic Tac Toe Next / TS Game</title>
               <meta name='description' content='Tic Tac Toe' />
           </Head>
+          <Board />
       </div>
   );
 }
