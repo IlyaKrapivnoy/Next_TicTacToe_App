@@ -12,9 +12,9 @@ const Square = ({
   onClick: () => void;
 }) => {
   if (!value) {
-    return <button disabled={Boolean(winner)} />;
+    return <button onClick={onClick} disabled={Boolean(winner)} />;
   }
-  return <button>Square is here</button>;
+  return <button disabled>{value}</button>;
 };
 
 export default Square;
