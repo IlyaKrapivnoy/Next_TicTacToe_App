@@ -71,18 +71,14 @@ const Board = () => {
           )}
 
           <div className='grid'>
-              {Array(9)
-                  .fill(null)
-                  .map((_, i) => {
-                      return (
-                          <Square
-                              winner={winner}
-                              key={i}
-                              onClick={() => setSquareValue(i)}
-                              value={squares[i]}
-                          />
-                      );
-                  })}
+              {squares.map((value, i) => (
+                  <Square
+                      winner={winner}
+                      key={i}
+                      onClick={() => setSquareValue(i)}
+                      value={value}
+                  />
+              ))}
           </div>
           <button className='reset' onClick={reset}>
               RESET
