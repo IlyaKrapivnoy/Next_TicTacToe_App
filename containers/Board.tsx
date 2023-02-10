@@ -13,11 +13,14 @@ const calculateWinner = (squares: Player[]) => {
     [0, 4, 8],
     [2, 4, 6],
   ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
-    }
+  for (const [a, b, c] of lines) {
+      if (
+          squares[a] &&
+          squares[a] === squares[b] &&
+          squares[a] === squares[c]
+      ) {
+          return squares[a];
+      }
   }
   return null;
 };
@@ -58,31 +61,29 @@ const Board = () => {
   });
 
   return (
-    <div>
-      {!winner && <p>Hey {currentPlayer}, it's your turn</p>}
-      {winner && winner !== "BOTH" && <p>Congratulations {winner}</p>}
-      {winner && winner === "BOTH" && (
-        <p>Congratulations you're both winners</p>
-      )}
+      <>
+          {!winner ? (
+              <p>Hey {currentPlayer}, it's your turn</p>
+          ) : winner !== 'BOTH' ? (
+              <p>Congratulations {winner}</p>
+          ) : (
+              <p>Congratulations you're both winners</p>
+          )}
 
-      <div className="grid">
-        {Array(9)
-          .fill(null)
-          .map((_, i) => {
-            return (
-              <Square
-                winner={winner}
-                key={i}
-                onClick={() => setSquareValue(i)}
-                value={squares[i]}
-              />
-            );
-          })}
-      </div>
-      <button className="reset" onClick={reset}>
-        RESET
-      </button>
-    </div>
+          <div className='grid'>
+              {squares.map((value, i) => (
+                  <Square
+                      winner={winner}
+                      key={i}
+                      onClick={() => setSquareValue(i)}
+                      value={value}
+                  />
+              ))}
+          </div>
+          <button className='reset' onClick={reset}>
+              RESET
+          </button>
+      </>
   );
 };
 

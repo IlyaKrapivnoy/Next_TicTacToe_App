@@ -3,24 +3,27 @@ import React from "react";
 type Player = "X" | "O" | null;
 
 const Square = ({
-  value,
-  onClick,
-  winner,
+    value,
+    onClick,
+    winner,
 }: {
-  winner: Player;
-  value: Player;
-  onClick: () => void;
+    winner: Player;
+    value: Player;
+    onClick: () => void;
 }) => {
-  if (!value) {
+    const isWinner = Boolean(winner);
+
     return (
-      <button className="square" onClick={onClick} disabled={Boolean(winner)} />
+        <button
+            className={
+                value ? `square square_${value.toLocaleLowerCase()}` : 'square'
+            }
+            onClick={onClick}
+            disabled={isWinner || !value}
+        >
+            {value ? value : null}
+        </button>
     );
-  }
-  return (
-    <button disabled className={`square square_${value.toLocaleLowerCase()}`}>
-      {value}
-    </button>
-  );
-};
+};  
 
 export default Square;
